@@ -80,7 +80,6 @@ WSGI_APPLICATION = 'instagram.wsgi.application'
 
 ALLOWED_HOSTS = ['.localhost', '.herokuapp.com', '.127.0.0.1']
 MODE=config("MODE", default="dev")
-SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 # development
 if config('MODE')=="prod":
