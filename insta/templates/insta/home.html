@@ -1,43 +1,43 @@
 {% extends 'insta/base.html' %}
-{% load static %}
 {% block content %}
-
-
+{% load static %}
 {{ block.super }}
-<link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
-<div class="container-fluid">
-    <div class="row">
-
+<div class="columns is-mobile">
     {% for post in posts %}
-    <div class="col-md-4 mb-4 ">
+    <div class="column is-4">
         <div class="card">
-
-        <!-- <article class="media content-section"> -->
-            
-            <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}" alt="">
-            <!-- <div class="col-md-4"> -->
-            <div class="card-body">
-            
-            
-            <div class="article-metadata">
-                <a class="" href="#">{{ post.author }}</a>
-                <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src="{{ post.image.url }}" alt="Placeholder image">
+                </figure>
             </div>
-            <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
-            <p class="card-text">{{ post.content }}</p>            
-            <img class="card-img-top" height="100%" width="100%" src= "{{ post.image.url }}" alt="Card image cap">
-            <button class="btn btn-info mb-4" ><a href="{{ post.url }}">visit site</a></button>
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-left">
+                        <figure class="image is-48x48">
+                            <img class="is-rounded" src="{{ post.author.profile.image.url }}" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <p class="title is-4">{{ post.author }}</p>
+                    </div>
+                </div>
 
-            <a href="{% url 'post-detail' post.pk %}">Review project</a>
-
+                <div class="content">
+                    <small>
+                        <h3>{{ post.title }}</h3>
+                    </small>
+                    <br>
+                    <p>{{ post.content }}</p>
+                    <small><strong>{{ post.date_posted|date:"F d, Y" }}</strong></small>
+                    <br>
+                    <button><a href="{{ post.url }}">visit site</a></button> <button><a
+                            href="{% url 'post-detail' post.pk %}">Review project</a></button>
+                </div>
             </div>
         </div>
     </div>
-        <!-- </article> -->
-
-        {% endfor %}
-    </div>
+    {% endfor %}
+    {% endblock content %}
 </div>
-<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
-{% endblock content %}
-    
+

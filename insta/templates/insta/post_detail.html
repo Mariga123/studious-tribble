@@ -1,12 +1,29 @@
 {% extends 'insta/base.html' %}
 {% block content %}
-    
-    <article class="media content-section">
-        <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}" alt="">
-        <div class="media-body">
-            <div class="article-metadata">
-                <a class="mr-2" href="#">{{ object.author }}</a>
-                <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+<article class="media">
+    <figure class="media-left">
+      <p class="image is-64x64">
+        <img src="{{ object.author.profile.image.url }}">
+      </p>
+    </figure>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong>{{ object.author }}</strong> 
+          <br>
+          <small>@{{ object.author }}</small> 
+          <br>
+          <div class="media-content is-center">
+            <img src="{{ object.image.url }}" alt="">
+          </div>
+          <br>
+          <h5>{{ object.title }}</h5>
+          <br>
+          <h6>{{ object.content }}</h6>
+        </p>
+        <small><strong>{{ object.date_posted|date:"F d, Y" }}</strong></small>
+      </div>
+     
                 {% if object.author == user %}
                 <div>
                     <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">update</a>
@@ -15,10 +32,6 @@
                     
                 {% endif %}
             </div>
-            <h2>{{ object.title }}</h2>
-            <p class="article-content">{{ object.content }}</p>
-        </div>
-    </article>
 
 {% endblock content %}
-    
+{{ object.content }}
