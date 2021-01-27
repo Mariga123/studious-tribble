@@ -82,7 +82,7 @@ ALLOWED_HOSTS = ['.localhost', '.herokuapp.com', '.127.0.0.1']
 MODE=config("MODE", default="dev")
 DEBUG = config('DEBUG', default=False, cast=bool)
 # development
-if config('MODE')=="prod":
+if config('MODE')=="dev":
    DATABASES = {
        'default': {
            'ENGINE': 'django.db.backends.postgresql_psycopg2',
